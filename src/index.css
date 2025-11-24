@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Typography Hierarchy */
+  h1 {
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  h2 {
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  p, li {
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* Ensure contrast ratios meet WCAG 4.5:1 minimum */
+  .text-pine-navy\/70 {
+    color: rgb(21 54 67 / 0.75);
+  }
+
+  .text-pine-navy\/80 {
+    color: rgb(21 54 67 / 0.85);
+  }
+
+  /* CTA Button Gradient Hover Effect */
+  button, a {
+    transition-property: background, color, transform, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+@layer components {
+  .cta-gradient-hover {
+    background: #1E7A3B;
+    transition: all 300ms ease-in-out;
+  }
+
+  .cta-gradient-hover:hover {
+    background: linear-gradient(135deg, #1E7A3B 0%, #0B4D8C 100%);
+  }
+}
+
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 72vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.logo-wrap {
+  position: relative;
+  z-index: 10;
+}
+
+.cable-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.cable-top {
+  top: 1.5%;
+  z-index: 20;
+}
+
+.cable-bottom {
+  top: 20.5%;
+  z-index: 5;
+}
+
+.cable-img {
+  position: relative;
+  left: -110vw;
+  width: 220vw;
+  height: 250px;
+  background-image: url('/Corstar Ethernet.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: left center;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(0);
+  }
+  95% {
+    transform: translateX(110vw);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes sweepOnce {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.cable-top .cable-img {
+  animation: sweepOnce 10s linear forwards, fadeOut 0.5s 5s forwards;
+}
+
+.cable-bottom .cable-img {
+  animation: sweepOnce 10s linear forwards, fadeOut 0.5s 5s forwards;
+}
+
+@media (max-width: 900px) {
+  .cable-img {
+    height: 183px;
+  }
+  .cable-top {
+    top: 1.5%;
+  }
+  .cable-bottom {
+    top: 20.5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cable-img {
+    height: 150px;
+  }
+  .cable-top {
+    top: 1.5%;
+  }
+  .cable-bottom {
+    top: 20.5%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-in-out;
+}
